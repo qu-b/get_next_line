@@ -6,11 +6,15 @@
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:59 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/15 11:03:42 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 15:13:28 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
+#endif
 
 // In get_next_line we read() text from a file into a buffer. The data in the 
 // buffer is moved incrementally into a temporary variable called next_line.

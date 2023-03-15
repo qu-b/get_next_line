@@ -6,15 +6,12 @@
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:55 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/15 10:29:38 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 15:12:39 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-// #ifndef BUFFER_SIZE
-// # define BUFFER_SIZE 42
-// #endif
 
 # include <stdlib.h>
 # include <unistd.h>
