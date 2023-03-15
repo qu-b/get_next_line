@@ -6,7 +6,7 @@
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:59 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/03 14:02:57 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 10:24:59 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,25 +95,4 @@ char	*get_next_line(int fd)
 	current_line = create_current_line(next_line);
 	next_line = get_to_next(next_line);
 	return (current_line);
-}
-
-#include <fcntl.h>
-#include "get_next_line.h"
-
-int main(void)
-{
-	int		fd = open("/Users/Francis/Documents/42/42-EXAM/rendu/test", O_RDONLY);
-	char	*line = NULL;
-
-
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		// printf("%s", line);
-		free(line);
-		line = NULL;
-	}
-	printf("%s", line);
-	free(line);
-	// system("leaks boc > bocleak 2>&1");
-	return(0);
 }

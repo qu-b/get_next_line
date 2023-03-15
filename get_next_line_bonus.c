@@ -6,7 +6,7 @@
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:59 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/15 10:17:29 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 10:22:48 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,29 +93,29 @@ char	*get_next_line(int fd)
 	return (current_line);
 }
 
-#include <stdio.h>
-#include <fcntl.h>
-#include "get_next_line_bonus.h"
+// #include <stdio.h>
+// #include <fcntl.h>
+// #include "get_next_line_bonus.h"
 
-int main(void)
-{
-	char	*temp;
-	char	*temp1;
-	int	fd;
-	int	fd1;
+// int main(void)
+// {
+// 	char	*temp;
+// 	char	*temp1;
+// 	int	fd;
+// 	int	fd1;
 
-	fd = open("myfile.txt", O_RDONLY);
-	fd1 = open("myfile2.txt", O_RDONLY);
-	while(1)
-	{
-		temp = get_next_line(fd);
-		temp1 = get_next_line(fd1);
-		if (!temp || !temp1)
-			break ;
-		printf("OUTPUT fd: %s\n", temp);
-		printf("OUTPUT fd1: %s\n", temp1);
-		free(temp);
-		free(temp1);
-	}
-	return (0);
-}
+// 	fd = open("myfile.txt", O_RDONLY);
+// 	fd1 = open("myfile2.txt", O_RDONLY);
+// 	while(1)
+// 	{
+// 		temp = get_next_line(fd);
+// 		temp1 = get_next_line(fd1);
+// 		if (!temp || !temp1)
+// 			break ;
+// 		printf("OUTPUT fd: %s\n", temp);
+// 		printf("OUTPUT fd1: %s\n", temp1);
+// 		free(temp);
+// 		free(temp1);
+// 	}
+// 	return (0);
+// }

@@ -6,7 +6,7 @@
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:53 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/03 17:42:11 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 10:24:47 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)(s + i));
 	return (0);
 }
-
 
 char	*ft_strdup(const char *s1)
 {
