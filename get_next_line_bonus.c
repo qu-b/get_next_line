@@ -6,7 +6,7 @@
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:59 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/15 10:22:48 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 11:03:42 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ char	*get_next_line(int fd)
 	while (!ft_strchr(next_line[fd], '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
-		if (bytes_read <= 0)
+		if (!bytes_read)
 			break ;
+		else if (bytes_read == -1)
+			return (free(buf), free(next_line[fd]), NULL);
 		buf[bytes_read] = '\0';
 		next_line[fd] = ft_strjoin(next_line[fd], buf);
 	}

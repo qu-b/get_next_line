@@ -6,7 +6,7 @@
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:59 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/15 10:24:59 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 11:15:56 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*get_next_line(int fd)
 	while (!ft_strchr(next_line, '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
-		if (bytes_read == 0)
+		if (!bytes_read)
 			break ;
 		else if (bytes_read < 0)
 			return (free(buf), free(next_line), NULL);
