@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:59 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/03 14:02:57 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 10:17:29 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>
+#include "get_next_line_bonus.h"
 
 // In get_next_line we read() text from a file into a buffer. The data in the 
 // buffer is moved incrementally into a temporary variable called next_line.
@@ -25,10 +24,10 @@ char	*create_current_line(char *str)
 	char	*result;
 	int		i;
 
-	if (str == 0)
+	if (!str)
 		return (0);
 	result = malloc(sizeof(char) * (ft_strlen(str) + 2));
-	if (result == 0)
+	if (!result)
 		return (0);
 	i = 0;
 	while (str[i])
@@ -42,7 +41,7 @@ char	*create_current_line(char *str)
 	return (result);
 }
 
-char	*get_to_next(char	*str)
+char	*get_to_next(char *str)
 {
 	char	*result;
 	int		i;
@@ -55,8 +54,7 @@ char	*get_to_next(char	*str)
 		i++;
 	if (!str[i] || !str[i + 1])
 		return (free(str), NULL);
-	if (str[i])
-		i++;
+	i++;
 	result = malloc(sizeof(char) * ft_strlen(str + i) + 1);
 	if (!result)
 		return (free(str), NULL);
@@ -72,7 +70,7 @@ char	*get_next_line(int fd)
 {
 	char		*buf;
 	char		*current_line;
-	static char	*next_line = NULL;
+	static char	*next_line[2147483647];
 	int			bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -81,39 +79,43 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (0);
 	bytes_read = 1;
-	while (!ft_strchr(next_line, '\n') && bytes_read != 0)
+	while (!ft_strchr(next_line[fd], '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
-		if (bytes_read == 0)
+		if (bytes_read <= 0)
 			break ;
-		else if (bytes_read < 0)
-			return (free(buf), free(next_line), NULL);
 		buf[bytes_read] = '\0';
-		next_line = ft_strjoin(next_line, buf);
+		next_line[fd] = ft_strjoin(next_line[fd], buf);
 	}
 	free(buf);
-	current_line = create_current_line(next_line);
-	next_line = get_to_next(next_line);
+	current_line = create_current_line(next_line[fd]);
+	next_line[fd] = get_to_next(next_line[fd]);
 	return (current_line);
 }
 
+#include <stdio.h>
 #include <fcntl.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int main(void)
 {
-	int		fd = open("/Users/Francis/Documents/42/42-EXAM/rendu/test", O_RDONLY);
-	char	*line = NULL;
+	char	*temp;
+	char	*temp1;
+	int	fd;
+	int	fd1;
 
-
-	while ((line = get_next_line(fd)) != NULL)
+	fd = open("myfile.txt", O_RDONLY);
+	fd1 = open("myfile2.txt", O_RDONLY);
+	while(1)
 	{
-		// printf("%s", line);
-		free(line);
-		line = NULL;
+		temp = get_next_line(fd);
+		temp1 = get_next_line(fd1);
+		if (!temp || !temp1)
+			break ;
+		printf("OUTPUT fd: %s\n", temp);
+		printf("OUTPUT fd1: %s\n", temp1);
+		free(temp);
+		free(temp1);
 	}
-	printf("%s", line);
-	free(line);
-	// system("leaks boc > bocleak 2>&1");
-	return(0);
+	return (0);
 }

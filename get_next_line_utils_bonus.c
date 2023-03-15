@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:01:53 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/03 17:42:11 by fcullen          ###   ########.fr       */
+/*   Updated: 2023/03/15 10:18:06 by fcullen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -42,27 +42,6 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-
-char	*ft_strdup(const char *s1)
-{
-	size_t	i;
-	char	*copy;
-
-	if (!s1)
-		return (0);
-	i = 0;
-	copy = malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (!copy)
-		return (0);
-	while (s1[i])
-	{
-		copy[i] = s1[i];
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
-}
-
 char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*s3;
@@ -89,4 +68,24 @@ char	*ft_strjoin(char *s1, char const *s2)
 	s3[i + j] = '\0';
 	free(s1);
 	return (s3);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	size_t	i;
+	char	*copy;
+
+	if (!s1)
+		return (NULL);
+	i = 0;
+	copy = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (!copy)
+		return (NULL);
+	while (s1[i])
+	{
+		copy[i] = s1[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }
