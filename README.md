@@ -1,7 +1,7 @@
-# Get Next Line (GNL) - Bonus
+# Get Next Line (GNL)
 
 ## Overview
-The Get Next Line (GNL) project is a C programming challenge that involves writing a function that reads a line ending with a newline character (`'\n'`) from a file descriptor. The bonus part of the project extends the functionality to handle multiple file descriptors simultaneously, allowing the user to read from different file descriptors in an interleaved manner without losing the reading thread of each one.
+The Get Next Line (GNL) project is a 42 school C programming challenge that involves writing a function that reads a line ending with a newline character (`'\n'`) from a file descriptor. The bonus part of the project extends the functionality to handle multiple file descriptors simultaneously, allowing the user to read from different file descriptors in an interleaved manner without losing the reading thread of each one.
 
 ## Features
 - Reads lines ending with a newline character.
