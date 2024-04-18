@@ -15,14 +15,14 @@ Include `get_next_line_bonus.h` in your project and compile with `get_next_line_
 ```c
 #include "get_next_line_bonus.h"
 int main() {
-int fd = open("example.txt", O_RDONLY);
-char line;
-while ((line = get_next_line(fd)) != NULL) {
-printf("%s", line);
-free(line);
-}
-close(fd);
-return 0;
+  int fd = open("example.txt", O_RDONLY);
+  char line;
+  while ((line = get_next_line(fd)) != NULL) {
+    printf("%s", line);
+    free(line);
+  }
+  close(fd);
+  return 0;
 }
 ```
 
