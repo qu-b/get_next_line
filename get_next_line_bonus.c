@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcullen <fcullen@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 13:01:59 by fcullen           #+#    #+#             */
-/*   Updated: 2023/03/15 15:13:28 by fcullen          ###   ########.fr       */
+/*   Created: 2022/10/30 13:01:59 by marvin            #+#    #+#             */
+/*   Updated: 2023/03/15 15:13:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ char	*get_next_line(int fd)
 {
 	char		*buf;
 	char		*current_line;
-	static char	*next_line[2147483647];
+	static char	*next_line[1024];
 	int			bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (0);
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
@@ -101,7 +101,6 @@ char	*get_next_line(int fd)
 
 // #include <stdio.h>
 // #include <fcntl.h>
-// #include "get_next_line_bonus.h"
 
 // int main(void)
 // {
@@ -110,18 +109,23 @@ char	*get_next_line(int fd)
 // 	int	fd;
 // 	int	fd1;
 
-// 	fd = open("myfile.txt", O_RDONLY);
-// 	fd1 = open("myfile2.txt", O_RDONLY);
+// 	fd = open("get_next_line_bonus.c", O_RDONLY);
+// 	fd1 = open("get_next_line_bonus.h", O_RDONLY);
 // 	while(1)
 // 	{
 // 		temp = get_next_line(fd);
 // 		temp1 = get_next_line(fd1);
-// 		if (!temp || !temp1)
+// 		if (!temp && !temp1)
 // 			break ;
-// 		printf("OUTPUT fd: %s\n", temp);
-// 		printf("OUTPUT fd1: %s\n", temp1);
+// 		if (temp)
+// 			printf("%s", temp);
+// 		if (temp1)
+// 			printf("%s", temp1);
 // 		free(temp);
 // 		free(temp1);
 // 	}
+// 	close(fd);
+// 	close(fd1);
 // 	return (0);
 // }
+
